@@ -18,7 +18,7 @@
 
   Cell.prototype.installEvents = function () {
     this.$input.on('click', this.handleClick.bind(this))
-    this.$input.on('keydown', this.changeValue.bind(this))
+    this.$input.on('keydown', this.handleKeydown.bind(this))
   };
 
   Cell.prototype.initialize = function() {
@@ -31,17 +31,24 @@
     this.$input.attr('maxlength', 1); //validate input to max length 1
   };
 
+  //handlers
+
   Cell.prototype.handleClick = function(event) {
     this.board.highlight(this);
   };
 
+  Cell.prototype.handleKeydown = function(event) {
+
+  };
+
+  //ui changes
   Cell.prototype.highlight = function() {
-
+    this.$input.addClass("highlight")
   };
 
-  Cell.prototype.changeValue = function(event) {
-
-  };
+  Cell.prototype.normalize = function() {
+    this.$input.removeClass("highlight")
+  }
 
 
 })();

@@ -4,10 +4,25 @@ table, tr, input, td, body, div {
   border: 0;
   padding: 0;
   outline: 0;
-
+  box-sizing: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+  background: transparent;
 }
 
 
+/* APPLICATION CLASSES */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+
+h1 {
+  padding: 40px;
+}
 
 
 /* GAME CLASSES */
@@ -28,4 +43,10 @@ table, tr, input, td, body, div {
   padding: 10px;
   margin: 2px;
   text-align: center;
+}
+
+/* INPUT CLASSES */
+
+.highlight {
+  background: #e3e3e3;
 }

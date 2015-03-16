@@ -42,10 +42,13 @@
     var block = cell.block
 
     for (var i = 0; i < this.cells.length; i++) {
-
+      var sampleCell = this.cells[i];
+      if (sampleCell.column === column || sampleCell.row === row || sampleCell.block === block) {
+        sampleCell.highlight()
+      } else {
+        sampleCell.normalize()
+      }
     }
-
-
   };
 
 })();
