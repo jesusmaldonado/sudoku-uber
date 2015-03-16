@@ -59,6 +59,7 @@
         var cellConflicts = sampleCell.conflicts(cell);
         if (cellConflicts) {
           setTimeout(cell.wipe.bind(cell), 2500);
+          setTimeout(sampleCell.doesNotConflict.bind(sampleCell), 2500);
         }
       }
       //check if right answer
