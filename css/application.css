@@ -1,0 +1,31 @@
+/* RESET */
+table, tr, input, td, body, div {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  background
+}
+
+
+
+
+/* GAME CLASSES */
+
+#sudokuContainer {
+  padding: 40px;
+}
+.sudoku-table {
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #aaaaaa;
+}
+
+.sudoku-table input {
+  width: 30px;
+  border: 2px solid #e3e3e3;
+  height: 30px;
+  padding: 10px;
+  margin: 2px;
+  text-align: center;
+}

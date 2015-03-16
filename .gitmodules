@@ -1,0 +1,3 @@
+[submodule "sudoku-solver"]
+    path = vendor/sudoku
+    url = https://github.com/robatron/sudoku.js
