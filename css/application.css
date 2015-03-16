@@ -1,6 +1,6 @@
 /* RESET */
 table, tr, input, td, body, div, a,
-h2, button {
+h2, button, ul, li, main {
   margin: 0;
   border: 0;
   padding: 0;
@@ -12,6 +12,7 @@ h2, button {
   color: inherit;
   background: transparent;
 }
+
 
 
 /* APPLICATION CLASSES */
