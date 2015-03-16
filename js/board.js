@@ -3,7 +3,8 @@
     window.Sudoku = {};
   }
 
-  var Board = Sudoku.Board = function(container, inputString, answerString) {
+  var Board = Sudoku.Board = function(game, container, inputString, answerString) {
+    this.game = game;
     this.$container = container;
     this.inputString = inputString;
     this.answerString = answerString;
@@ -67,7 +68,10 @@
         totalCorrect++;
       }
     }
-    console.log(totalCorrect)
+    console.log("hi")
+    if (totalCorrect === 81) {
+      this.game.won();
+    }
   };
 
 })();
