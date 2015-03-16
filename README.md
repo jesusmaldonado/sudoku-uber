@@ -5,7 +5,7 @@ Sudoku Solver
 
 A sudoku game that utilizes a Game, Board, and Cell classes.
 
-My aim for the project was to create an abstraction for the components of a typical sudoku game and maintain separation of concerns for readability.
+My aim for the project was to create an abstraction for the components of a typical sudoku game and maintain separation of concerns for readability. The project hooks unto a library API.
 
 Aesthetics
 ==
@@ -29,26 +29,33 @@ Responsibilities: Orchestrates UI changes at the scale of the board, informs gam
 
 **Cell**
 
-Responsibilities: Validates individual input, handles UI changes for a cell.
+Responsibilities: Validates individual input, handles UI changes for a cell. **Note: I opted for more memory usage in order to keep an O(n) by having cells hold onto their row, column, and block attributes. I was afraid it would be too slow. I'm only ever going through 81 elements at a time. **
 
 APIs/Resources
 ==
-[Sudoku Generator Libary][sudoku-generator] for Sudoku String Generation
+**[Sudoku Generator Libary][sudoku-generator]**
+
+For Sudoku String Generation.
 
 
-Google-Hosted jQuery v 2.1.3
+**Google-Hosted jQuery v 2.1.3**
 
-jQuery is a library
+jQuery moves mountains.
 
-Google Fonts
+**Google Fonts**
 
 Roboto is a pretty good font for slimness and readability.
 
 
 Cross-Compatibility
 ==
-Devices Tested: iPhone 6+, HTC ONE M8
-Browsers: IE10, Firefox, Chrome, Safari
+**Devices Tested**
+
+iPhone 6+, HTC ONE M8
+
+**Browsers**
+
+IE10, Firefox, Chrome, Safari
 
 To-Do
 ==
