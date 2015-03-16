@@ -84,7 +84,7 @@ a:hover {
 }
 
 .current-difficulty:after {
-  content: "◄";
+  content: "  ◄";
 
 }
 
@@ -117,9 +117,6 @@ ul li a:hover {
   float: left;
 }
 
-.reset:before {
-  content: "             ";
-}
 
 /* GAME CLASSES */
 
