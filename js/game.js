@@ -15,9 +15,9 @@
   Game.prototype.installEvents = function() {
       $(".play-again").on("click", this.playAgain.bind(this));
       $(".control-buttons").on("click", ".control", this.changeDifficulty.bind(this));
-      $(".reset").on("click", this.reset.bind(this))
-      $(".solve").on("click", this.solve.bind(this))
-      $(".reload").on("click", this.reload.bind(this))
+      $(".reset").on("click", this.reset.bind(this));
+      $(".solve").on("click", this.solve.bind(this));
+      $(".reload").on("click", this.reload.bind(this));
   };
 
   Game.prototype.playAgain = function() {
@@ -36,7 +36,7 @@
   }
 
   Game.prototype.solve = function(){
-    this.board.solve()
+    this.board.solve();
   }
 
   Game.prototype.changeDifficulty = function(event){
@@ -49,8 +49,10 @@
 
   Game.prototype.resetBoard = function(difficulty) {
     if (difficulty === "baby") {
-      difficulty = 80;
+      difficulty = 75;
     }
+    var message = $(".winning-message");
+    message.addClass("hidden");
     this.$container.empty();
     this.$container.removeClass("inactive");
     var str = sudoku.generate(difficulty);
@@ -65,8 +67,8 @@
   Game.prototype.won = function() {
     var message = $(".winning-message");
     message.removeClass("hidden");
-    this.$container.addClass("inactive")
-    this.board.deactivate()
+    this.$container.addClass("inactive");
+    this.board.deactivate();
   };
 
 })();

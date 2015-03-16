@@ -8,10 +8,10 @@
     this.$container = container;
     this.inputString = inputString;
     this.answerString = answerString;
-    this.$table = $("<table>")
-    this.cells = []
+    this.$table = $("<table>");
+    this.cells = [];
     this.initialCorrect = 0;
-    this.initialize()
+    this.initialize();
   }
 
   Board.prototype.initialize = function() {
@@ -24,11 +24,11 @@
           var cell = new Sudoku.Cell(i, j, initialValue, correctValue, this);
           this.cells.push(cell);
           if (cell.correctStatus == true) {
-            this.initialCorrect++
+            this.initialCorrect++;
           }
 
-          $td = $("<td>").append(cell.$input)
-          $tr.append($td)
+          $td = $("<td>").append(cell.$input);
+          $tr.append($td);
         }
         this.$table.append($tr);
     }
@@ -39,9 +39,9 @@
     for (var i = 0; i < this.cells.length; i++) {
       var sampleCell = this.cells[i];
       if (cell.groupedWith(sampleCell)) {
-        sampleCell.highlight()
+        sampleCell.highlight();
       } else {
-        sampleCell.normalize()
+        sampleCell.normalize();
       }
     }
   };
@@ -56,17 +56,17 @@
   Board.prototype.solve = function(){
     for (var i = 0; i < this.cells.length; i++) {
       var sampleCell = this.cells[i];
-      sampleCell.solve()
+      sampleCell.solve();
     }
   }
 
   Board.prototype.validateAnswer = function(cell) {
-    var answer = cell.$input.val()
+    var answer = cell.$input.val();
     var totalCorrect = this.initialCorrect
     for (var i = 0; i < this.cells.length; i++) {
       var sampleCell = this.cells[i];
-      var sampleCellAnswer = sampleCell.$input.val()
-      sampleCell.doesNotConflict()
+      var sampleCellAnswer = sampleCell.$input.val();
+      sampleCell.doesNotConflict();
 
       //check for conflicts
       if (cell.groupedWith(sampleCell)) {
