@@ -16,11 +16,11 @@ Responsibilities: Handles game state, visual logic outside the board.
 
 **Board**
 
-Responsibilities: Handles UI changes at the scale of the board, informs game of state.
+Responsibilities: Orchestrates UI changes at the scale of the board, informs game of state.
 
 **Cell**
 
-Responsibilities: Validates individual input.
+Responsibilities: Validates individual input, handles UI changes for a cell.
 
 APIs/Resources
 ==
@@ -34,8 +34,6 @@ Google Fonts
 To-Do
 ==
 Backtracing algorithm for people like me who aren't very good at Sudoku...
-
-Maybe the board class knows too much?
 
 Cells should update user of UI errors...
 

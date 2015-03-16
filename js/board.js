@@ -47,6 +47,10 @@
     }
   };
 
+  Board.prototype.deactivate = function(){
+    
+  }
+
   Board.prototype.validateAnswer = function(cell) {
     var answer = cell.$input.val()
     var totalCorrect = this.initialCorrect

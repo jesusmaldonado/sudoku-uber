@@ -14,7 +14,7 @@
 
   Game.prototype.installEvents = function() {
       $(".play-again").on("click", this.newGame.bind(this));
-      
+
   };
 
   Game
@@ -23,6 +23,7 @@
     var message = $(".winning-message");
     message.removeClass("hidden");
     this.$container.addClass("inactive")
+    this.board.deactivate
   };
 
 })();
