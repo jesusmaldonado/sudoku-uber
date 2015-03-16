@@ -21,23 +21,21 @@
   };
 
   Game.prototype.playAgain = function() {
-    var difficulty = $(".current-difficulty").html()
-    this.resetBoard(difficulty);
+    this.reload();
     $(".winning-message").addClass("hidden");
   }
 
   Game.prototype.reset = function(){
     this.$container.empty();
-    console.log("reset")
     this.board = new Sudoku.Board(this, this.$container, this.inputString, this.answerString);
   }
 
   Game.prototype.reload = function(){
-
+    var difficulty = $(".current-difficulty").html()
+    this.resetBoard(difficulty);
   }
 
   Game.prototype.solve = function(){
-    console.log("solve")
     this.board.solve()
   }
 
