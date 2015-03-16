@@ -9,7 +9,7 @@
     this.answerString = answerString;
     this.$table = $("<table>")
     this.cells = []
-    this.correctBlocks = 0;
+    this.initialCorrect = 0;
     this.initialize()
   }
 
@@ -24,7 +24,7 @@
           var cell = new Sudoku.Cell(i, j, initialValue, correctValue, this);
           this.cells.push(cell);
           if (cell.correctStatus == true) {
-            this.correctBlocks++
+            this.initialCorrect++
           }
 
           $td = $("<td>").append(cell.$input)
@@ -48,18 +48,25 @@
 
   Board.prototype.validateAnswer = function(cell) {
     var answer = cell.$input.val()
+    var totalCorrect = this.initialCorrect
     for (var i = 0; i < this.cells.length; i++) {
       var sampleCell = this.cells[i];
       var sampleCellAnswer = sampleCell.$input.val()
+      sampleCell.doesNotConflict()
+
+      //check for conflicts
       if (cell.groupedWith(sampleCell)) {
-        if (sampleCellAnswer === answer) {
-          debugger
-          sampleCell.conflicts(cell)
-        } else {
-          sampleCell.doesNotConflict()
+        var cellConflicts = sampleCell.conflicts(cell);
+        if (cellConflicts) {
+          setTimeout(cell.wipe.bind(cell), 2500);
         }
       }
+      //check if right answer
+      if (sampleCellAnswer == sampleCell.correctValue && !sampleCell.frozen) {
+        totalCorrect++;
+      }
     }
-  }
+    console.log(totalCorrect)
+  };
 
 })();

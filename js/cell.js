@@ -8,9 +8,12 @@
     this.block = Math.floor(row / 3) * 3 + Math.floor(column / 3);
     this.board = board;
     this.column = column;
+
+    this.frozen = false;
     this.value = initialValue;
     this.correctValue = correctValue;
     this.correctStatus = false;
+
     this.$input = $("<input>")
     this.installEvents()
     this.initialize();
@@ -25,6 +28,7 @@
     if (this.value > 0 && this.value <= 9) {
       this.$input.val(this.value);
       this.correctStatus = true;
+      this.frozen = true;
       this.$input.attr('readonly', 'readonly');
     }
 
@@ -40,7 +44,7 @@
   };
 
   Cell.prototype.equals = function(otherCell) {
-    if (otherCell.column === this.column || otherCell.row === this.row || otherCell.block === this.block) {
+    if (otherCell.column === this.column && otherCell.row === this.row && otherCell.block === this.block) {
       return true;
     }
     return false;
@@ -60,19 +64,21 @@
   };
 
   Cell.prototype.conflicts = function(otherCell) {
-    debugger
-    if (this.doesNotEqual(otherCell)) {
-      this.$input.addClass("conflict")
+    if (this.doesNotEqual(otherCell) && this.$input.val() === otherCell.$input.val()) {
+      this.$input.addClass("conflict");
+      return true;
     }
-  }
+    return false
+    // setTimeout(this.wipe.bind(this), 2000)
+  };
 
   Cell.prototype.wipe = function(){
     this.$input.val("");
-  }
+  };
 
   Cell.prototype.doesNotConflict = function(){
     this.$input.removeClass("conflict");
-  }
+  };
 
   //ui changes
   Cell.prototype.highlight = function() {
@@ -81,7 +87,7 @@
 
   Cell.prototype.normalize = function() {
     this.$input.removeClass("highlight");
-  }
+  };
 
 
 })();
