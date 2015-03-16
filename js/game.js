@@ -11,15 +11,4 @@
     this.board = new Sudoku.Board(container, inputString, answerString);
   };
 
-  //this function should initialize the table, and add all inputs to the GameView
-  Game.prototype.initialize = function() {
-    
-  };
-
-  Game.prototype.validateResponse = function(event){
-
-  }
-
-
-
 })();

@@ -41,8 +41,8 @@
     var row = cell.row
     var block = cell.block
 
-    for (var i = 0; i < cells.length; i++) {
-      
+    for (var i = 0; i < this.cells.length; i++) {
+
     }
 
 
