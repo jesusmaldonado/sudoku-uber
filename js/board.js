@@ -36,19 +36,30 @@
   };
 
   Board.prototype.highlight = function(cell) {
-
-    var column = cell.column
-    var row = cell.row
-    var block = cell.block
-
     for (var i = 0; i < this.cells.length; i++) {
       var sampleCell = this.cells[i];
-      if (sampleCell.column === column || sampleCell.row === row || sampleCell.block === block) {
+      if (cell.groupedWith(sampleCell)) {
         sampleCell.highlight()
       } else {
         sampleCell.normalize()
       }
     }
   };
+
+  Board.prototype.validateAnswer = function(cell) {
+    var answer = cell.$input.val()
+    for (var i = 0; i < this.cells.length; i++) {
+      var sampleCell = this.cells[i];
+      var sampleCellAnswer = sampleCell.$input.val()
+      if (cell.groupedWith(sampleCell)) {
+        if (sampleCellAnswer === answer) {
+          debugger
+          sampleCell.conflicts(cell)
+        } else {
+          sampleCell.doesNotConflict()
+        }
+      }
+    }
+  }
 
 })();

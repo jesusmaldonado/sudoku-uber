@@ -50,3 +50,8 @@ h1 {
 .highlight {
   background: #e3e3e3;
 }
+
+.conflict {
+  color: #ff0000;
+  font-weight: 200;
+}

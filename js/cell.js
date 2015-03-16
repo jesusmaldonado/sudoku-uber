@@ -8,7 +8,7 @@
     this.block = Math.floor(row / 3) * 3 + Math.floor(column / 3);
     this.board = board;
     this.column = column;
-    this.initialValue = initialValue;
+    this.value = initialValue;
     this.correctValue = correctValue;
     this.correctStatus = false;
     this.$input = $("<input>")
@@ -18,19 +18,37 @@
 
   Cell.prototype.installEvents = function () {
     this.$input.on('click', this.handleClick.bind(this))
-    this.$input.on('keydown', this.handleKeydown.bind(this))
+    this.$input.on('keyup', this.handleKeydown.bind(this))
   };
 
   Cell.prototype.initialize = function() {
-    if (this.initialValue > 0 && this.initialValue <= 9) {
-      this.$input.val(this.initialValue);
+    if (this.value > 0 && this.value <= 9) {
+      this.$input.val(this.value);
       this.correctStatus = true;
+      this.$input.attr('readonly', 'readonly');
     }
 
     //add some front-end validations
     this.$input.attr('maxlength', 1); //validate input to max length 1
   };
 
+  Cell.prototype.groupedWith = function(otherCell) {
+    if (otherCell.column === this.column || otherCell.row === this.row || otherCell.block === this.block) {
+      return true;
+    }
+    return false;
+  };
+
+  Cell.prototype.equals = function(otherCell) {
+    if (otherCell.column === this.column || otherCell.row === this.row || otherCell.block === this.block) {
+      return true;
+    }
+    return false;
+  }
+
+  Cell.prototype.doesNotEqual = function(otherCell) {
+    return !this.equals(otherCell);
+  }
   //handlers
 
   Cell.prototype.handleClick = function(event) {
@@ -38,16 +56,31 @@
   };
 
   Cell.prototype.handleKeydown = function(event) {
-
+    this.board.validateAnswer(this);
   };
+
+  Cell.prototype.conflicts = function(otherCell) {
+    debugger
+    if (this.doesNotEqual(otherCell)) {
+      this.$input.addClass("conflict")
+    }
+  }
+
+  Cell.prototype.wipe = function(){
+    this.$input.val("");
+  }
+
+  Cell.prototype.doesNotConflict = function(){
+    this.$input.removeClass("conflict");
+  }
 
   //ui changes
   Cell.prototype.highlight = function() {
-    this.$input.addClass("highlight")
+    this.$input.addClass("highlight");
   };
 
   Cell.prototype.normalize = function() {
-    this.$input.removeClass("highlight")
+    this.$input.removeClass("highlight");
   }
 
 
