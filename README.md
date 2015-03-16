@@ -65,7 +65,7 @@ Games Won
 
 Backtracing algorithm for people like me who aren't very good at Sudoku...
 
-Cells should update user of UI errors...
+Cells should update user of UI errors...like a mousetip. jQuery UI, but what's the equivalent feedback for mobile?
 
 Opera testing
 
