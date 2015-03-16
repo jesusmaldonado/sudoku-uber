@@ -14,7 +14,6 @@
     this.initialize()
   }
 
-
   Board.prototype.initialize = function() {
     this.$table.addClass("sudoku-table");
     for (var i = 0; i < 9; i++) {
@@ -48,7 +47,17 @@
   };
 
   Board.prototype.deactivate = function(){
-    
+    for (var i = 0; i < this.cells.length; i++) {
+      var sampleCell = this.cells[i];
+      sampleCell.deactivate();
+    }
+  };
+
+  Board.prototype.solve = function(){
+    for (var i = 0; i < this.cells.length; i++) {
+      var sampleCell = this.cells[i];
+      sampleCell.solve()
+    }
   }
 
   Board.prototype.validateAnswer = function(cell) {
@@ -70,9 +79,10 @@
       //check if right answer
       if (sampleCellAnswer == sampleCell.correctValue && !sampleCell.frozen) {
         totalCorrect++;
+        sampleCell.value = sampleCellAnswer;
+        sampleCell.correctStatus = true;
       }
     }
-    console.log("hi")
     if (totalCorrect === 81) {
       this.game.won();
     }

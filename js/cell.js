@@ -63,6 +63,7 @@
     this.board.validateAnswer(this);
   };
 
+  //ui changes
   Cell.prototype.conflicts = function(otherCell) {
     if (this.doesNotEqual(otherCell) && this.$input.val() === otherCell.$input.val()) {
       this.$input.addClass("conflict");
@@ -76,11 +77,15 @@
     this.$input.val("");
   };
 
+  Cell.prototype.deactivate = function(){
+    this.frozen = true;
+    this.$input.attr('readonly', 'readonly');
+  }
+
   Cell.prototype.doesNotConflict = function(){
     this.$input.removeClass("conflict");
   };
 
-  //ui changes
   Cell.prototype.highlight = function() {
     this.$input.addClass("highlight");
   };
@@ -88,6 +93,14 @@
   Cell.prototype.normalize = function() {
     this.$input.removeClass("highlight");
   };
+
+  Cell.prototype.solve = function(){
+    if (this.correctStatus === false) {
+      this.$input.val(this.correctValue);
+      this.deactivate()
+      this.$input.addClass("solved")
+    }
+  }
 
 
 })();
