@@ -15,13 +15,28 @@
   Game.prototype.installEvents = function() {
       $(".play-again").on("click", this.playAgain.bind(this));
       $(".control-buttons").on("click", "a", this.changeDifficulty.bind(this));
+      $(".reset").on("click", this.reset.bind(this))
+      $(".solve").on("click", this.reload.bind(this))
+      $(".reload").on("click", this.solve.bind(this))
+
   };
 
   Game.prototype.playAgain = function() {
     var difficulty = $(".current-difficulty").html()
     this.resetBoard(difficulty);
     $(".winning-message").addClass("hidden");
+  }
 
+  Game.prototype.reset = function(){
+    this.$container.empty();
+    this.board = new Sudoku.Board(this, this.$container, this.inputString, this.answerString);
+  }
+
+  Game.prototype.reload = function(){
+
+  }
+
+  Game.prototype.solve = function(){
 
   }
 

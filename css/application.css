@@ -113,6 +113,14 @@ ul li a:hover {
   margin-right: 30%;
 }
 
+.game-mechanics {
+  float: left;
+}
+
+.reset:before {
+  content: "             ";
+}
+
 /* GAME CLASSES */
 
 #sudoku-container,
