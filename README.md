@@ -29,7 +29,7 @@ Responsibilities: Orchestrates UI changes at the scale of the board, informs gam
 
 **Cell**
 
-Responsibilities: Validates individual input, handles UI changes for a cell. **Note: I opted for more memory usage in order to keep an O(n) by having cells hold onto their row, column, and block attributes. I was afraid it would be too slow. I'm only ever going through 81 elements at a time. **
+Responsibilities: Validates individual input, handles UI changes for a cell. **Note: I opted for more memory usage in order to keep an O(n) by having cells hold onto their row, column, and block attributes. I was afraid iterating multiple times or through an array of arrays would be too slow. I'm only ever going through 81 elements at a time. I was already doing a lot of manipulations in jQuery so I wanted to minimize runtime.**
 
 APIs/Resources
 ==
